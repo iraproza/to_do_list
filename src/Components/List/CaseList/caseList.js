@@ -1,11 +1,20 @@
 import React from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
+import "./caseList.css";
 
 class CaseList extends React.Component  {
     render(){
         return(      
                 <li>
-                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> For what reason would it be advisable.</input>  <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                    <div className="form-check"> 
+                        <label className="form-check-label"> 
+                            <input className="checkbox" type="checkbox"/>  
+                            <i className="input-helper"></i>
+                            <label >How to do</label>
+                        </label> 
+                    </div>
+                    <i className="fas fa-pencil-alt"></i>
+                    <i className="fas fa-trash-alt"></i>
                 </li>                   
         )
     }

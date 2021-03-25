@@ -1,15 +1,17 @@
-
+.nav{
+    padding-top: 30px;
+}
 
 .home-icon,
-.add-contact-icon{
+.add-icon{
     font-size: 30px;
-    color: #dfddde;
+    color: #f1e0e9;
 }
 
 .home-icon:hover,
-.add-contact-icon:hover,
+.add-icon:hover,
 .home-icon:focus,
-.add-contact-icon:focus{
+.add-icon:focus{
     color: #dfdddebd;
 }
 

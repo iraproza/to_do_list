@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import {connect} from "react-redux";
+import "./search.css";
 // import "./search.css";
 import {searchContact} from "../../Actions/ListActions"
 

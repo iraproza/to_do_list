@@ -17,7 +17,7 @@ const Header = () =>{
                                 To Do List
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/add-case"><i className="fas fa-user-plus add-contact-icon"></i></Link>
+                                <Link className="nav-link" to="/add"><i className="fas fa-plus add-icon"></i></Link>
                             </li>
                         </ul>
                     </div>

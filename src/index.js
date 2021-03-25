@@ -11,11 +11,11 @@ import {
 import "./index.css";
 
 import Header from "./Components/Header/header";
-// import AddCase from "./Components/AddCase/addCase";
+import AddCase from "./Components/AddCase/addCase";
 import List from "./Components/List/list";
 import Search from "./Components/Search/search";
-// import NotFound from "./Components/NotFound/notFound";
-// import EditList from "./Components/EditList/editList";
+import NotFound from "./Components/NotFound/notFound";
+import EditList from "./Components/EditList/editList";
 
 class App extends Component{
   render(){
@@ -25,9 +25,10 @@ class App extends Component{
           <Header/>
           <Search/>
           <Switch> 
-            <Route path = "/" exact component = {List}> </Route>
-            {/* <Route path = "/add-case" exact component = {AddCase}> </Route> */}
-            {/* <Route path = "/edit-case" exact component = {EditList}> </Route> */}
+            <Route path = "/" exact component = {List} />
+            <Route path = "/add" exact component = {AddCase} />
+            <Route path = "/edit" exact component = {EditList} />
+            <Route path = "" exact component = {NotFound} /> 
           </Switch>
         </Router>
       </Provider>
