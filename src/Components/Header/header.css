@@ -1,0 +1,21 @@
+
+
+.home-icon,
+.add-contact-icon{
+    font-size: 30px;
+    color: #dfddde;
+}
+
+.home-icon:hover,
+.add-contact-icon:hover,
+.home-icon:focus,
+.add-contact-icon:focus{
+    color: #dfdddebd;
+}
+
+.logo i{
+    margin-right: 5px;
+    font-size: 20px;
+    color: #dfddde;
+
+}
