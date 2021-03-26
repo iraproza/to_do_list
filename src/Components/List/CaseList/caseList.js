@@ -5,16 +5,18 @@ import "./caseList.css";
 class CaseList extends React.Component  {
     render(){
         return(      
-                <li>
+                <li className = "item-list">
                     <div className="form-check"> 
-                        <label className="form-check-label"> 
+                        <label className="form-check-label description"> 
                             <input className="checkbox" type="checkbox"/>  
                             <i className="input-helper"></i>
-                            <label >How to do</label>
+                            How to do
                         </label> 
                     </div>
-                    <i className="fas fa-pencil-alt"></i>
-                    <i className="fas fa-trash-alt"></i>
+                    <div>
+                        <i className="fas fa-pencil-alt icon-edit"></i>
+                        <i className="fas fa-trash-alt icon-edit"></i>
+                    </div>
                 </li>                   
         )
     }

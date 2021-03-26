@@ -257,8 +257,8 @@ body {
 .form-check .form-check-label {
   min-height: 18px;
   display: block;
-  margin-left: 1.75rem;
-  font-size: 0.875rem;
+  margin-left: 40px;
+  font-size: 18px;
   line-height: 1.5
 }
 
@@ -275,7 +275,7 @@ body {
   top: 0;
   left: 0;
   margin-left: 0;
-  margin-top: 0;
+  margin-top: 10px;
   z-index: 1;
   cursor: pointer;
   opacity: 0;
@@ -300,6 +300,11 @@ input[type="checkbox"] {
   max-width: 100%;
   white-space: nowrap
 }
+.list-wrapper ul li .form-check{
+  display: flex;
+  align-items: center;
+}
+
 
 .form-check .form-check-label input[type="checkbox"]+.input-helper:before {
   content: "";
@@ -361,6 +366,7 @@ input[type="checkbox"] {
 
 .form-check .form-check-label input[type="checkbox"]+.input-helper:before {
   content: "";
+  margin-top: 4px;
   width: 18px;
   height: 18px;
   border-radius: 2px;
@@ -411,9 +417,12 @@ input[type="checkbox"] {
 }
 
 .list-wrapper ul li {
-  font-size: .9375rem;
-  padding: .4rem 0;
-  border-bottom: 1px solid #f3f3f3
+  font-size: 18px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #f3f3f3;
+  margin-bottom: 10px;
+  border-radius: 5px;
+
 }
 
 .mdi:before {

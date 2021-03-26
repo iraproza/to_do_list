@@ -8,6 +8,12 @@ const ListReducer = (state = initialState, action) => {
             return {
                 ToDoList: action.payload
             }
+        case "ADD_NEW_ITEM":
+            return {
+                ToDoList: [
+                    ...state.ToDoList,
+                    action.payload]
+            }
 
         default:
             return state;

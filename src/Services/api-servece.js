@@ -1,6 +1,6 @@
 URL = "https://todolist-a9d6d-default-rtdb.firebaseio.com/ToDoList.json"
 
-export const updateDatabase = () => {
+export const upDatabase = () => {
     const data = fetch(URL)
         .then(responce => {
             return responce.json();
@@ -17,13 +17,13 @@ export const updateDatabase = () => {
     return data;
 }
 
-export const saveData = (toDoList) => {
+export const saveData = (ToDoList) => {
     const response = fetch(URL, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(toDoList),
+      body: JSON.stringify(ToDoList),
     }).then(response => {
         return response;
     }).catch(err => {

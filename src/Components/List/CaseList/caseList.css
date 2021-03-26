@@ -1,3 +1,35 @@
 .line-through{
     text-decoration:line-through;
 }
+
+body .item-list{
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1e0e9;
+    align-items: center;
+}
+
+.description{
+    margin: 0;
+}
+
+.icon-edit{
+    color: #744974;
+    transition: .3s;
+}
+
+.icon-edit:hover,
+.icon-edit:focus{
+    transform: scale(1.1);
+}
+
+.icon-edit:active{
+    transform: scale(.9);
+    color: #2c1d2c;
+}
+
+.icon-edit:first-of-type{
+    margin-right: 15px;
+}
+
+
