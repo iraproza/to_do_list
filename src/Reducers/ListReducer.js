@@ -14,6 +14,10 @@ const ListReducer = (state = initialState, action) => {
                     ...state.ToDoList,
                     action.payload]
             }
+        case "UPDATE_ITEM":
+            return{
+                ToDoList: action.payload
+            }
 
         default:
             return state;

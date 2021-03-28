@@ -11,3 +11,11 @@
         payload: item
     }
 }
+
+  export const updateItem = (ToDoList) => {
+    return {
+      type: "UPDATE_ITEM",
+      payload: ToDoList
+    }
+
+  }

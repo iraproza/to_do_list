@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
 import { Redirect } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 import { connect } from "react-redux";
 import { saveData } from "../../Services/api-servece";
 import { addNewItem } from "../../Actions/ListActions";
+
 
 
 class AddCase extends React.Component {
@@ -28,7 +30,8 @@ class AddCase extends React.Component {
     addNewItems = (event) =>{
         event.preventDefault();
         const { Description, Deadline, Do } = this.state;
-        const newItem = { Description, Deadline, Do };
+        const Id = uuidv4();
+        const newItem = { Id, Description, Deadline, Do };
         const { ToDoList, addNewItem } = this.props;
         addNewItem(newItem);
         ToDoList.push(newItem);

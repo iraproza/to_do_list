@@ -1,8 +1,25 @@
 import React, { Fragment, useEffect } from "react";
 import CaseList from "./CaseList/caseList";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { upDatabase } from "../../Services/api-servece";
+import { getAllList } from "../../Actions/ListActions"
 
-const List = () => {
+const List = ({ ToDoList, getAllList }) => {
+
+    useEffect(() => {
+        upDatabase().then(data => {
+            getAllList(data)
+        })
+    }, [])
+
+    const renderList = () =>{
+        return ToDoList.map(item => {
+            return (
+                <CaseList  key={item.Id} {...item} />
+            )
+        })
+    }
+
     return(
         <Fragment>
             <div className="container">
@@ -12,7 +29,7 @@ const List = () => {
                             <div className="card-body">
                                 <div className="list-wrapper">
                                     <ul className="d-flex flex-column-reverse todo-list">
-                                        <CaseList/>
+                                        {renderList()}
                                     </ul>
                                 </div>
                             </div>
@@ -24,4 +41,13 @@ const List = () => {
     )
 }
 
-export default List;
+const mapStateToProps = ({ ListReducer }) => {
+    const { ToDoList } = ListReducer;
+    return { ToDoList }
+}
+
+const mapDispatchToProps = {
+    getAllList
+}
+
+export default  connect (mapStateToProps, mapDispatchToProps)(List);

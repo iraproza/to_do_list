@@ -1,5 +1,6 @@
 .line-through{
     text-decoration:line-through;
+    text-decoration-color:#b482b4;
 }
 
 body .item-list{
@@ -32,4 +33,13 @@ body .item-list{
     margin-right: 15px;
 }
 
+.form-check{
+    display: flex;
+    flex-direction: column;
+}
+
+.deadline{
+    font-size: 12px;
+    color: #744974;
+}
 
