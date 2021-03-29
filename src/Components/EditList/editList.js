@@ -56,6 +56,9 @@ class EditList extends React.Component {
                 <Redirect to = "/"/>
             )
         }
+        const arrDate = ((new Date()).toLocaleDateString()).split(".");
+        const  calendar = [arrDate[2], arrDate[1], arrDate[0]].join('-')
+        
         return(
             <Fragment>
                  <div className="container">
@@ -65,15 +68,15 @@ class EditList extends React.Component {
                                 <div className="card-body">
                                     <div className="list-wrapper">
                                         <h2> Edit plan</h2>
-                                        <ul className="d-flex flex-column todo-list">
+                                        <form className="d-flex flex-column add-new-item">
                                             <label htmlFor="to-do-item"> What are you planning?
-                                                <input type="text" id="to-do-item" value={Description} onChange ={this.getDescription}></input>
                                             </label>
-                                            <label htmlFor="to-do-deadline"> Deadline
-                                                <input type="date" id="to-do-deadline" value = { Deadline} onChange = {this.getDeadline}></input>
+                                            <input type="text" id="to-do-item"  value={ Description } onChange ={this.getDescription}></input>
+                                            <label  htmlFor="to-do-deadline"> Deadline
                                             </label>
-                                            <button className="col-7 col-md-7 col-lg-7" onClick = {this.editList}> Edit </button>
-                                        </ul>
+                                            <input type="date" id="to-do-deadline" value = { Deadline } onChange = {this.getDeadline} min = {calendar} ></input>
+                                            <button onClick = {this.editList}> Edit </button>                                        
+                                        </form>
                                     </div>
                                 </div>
                             </div>

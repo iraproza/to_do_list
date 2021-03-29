@@ -2,7 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { saveData } from "../../../Services/api-servece";
-import {Redirect} from "react-router-dom";
 import { updateItem, deleteItem, editItem } from "../../../Actions/ListActions";
 import "./caseList.css";
 
@@ -53,7 +52,7 @@ class CaseList extends React.Component  {
         const {Description, Deadline, Do} = this.props;
         let statusStyle = "form-check-label description";
         let checked = "checked";
-        if( Do == true){
+        if( Do === true){
             statusStyle = "form-check-label description line-through";
         }
         else{

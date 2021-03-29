@@ -1,0 +1,28 @@
+.add-new-item label{
+    font-size: 18px;
+    line-height: 35px;
+    margin-bottom: 0;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.add-new-item input{
+    line-height: 30px;
+    font-size: 18px;
+    padding: 5px 10px;
+    margin: 0px 10px;
+    border-radius: 5px;
+}
+
+.add-new-item button{
+    display: flex;
+    border-radius: 5px;
+    line-height: 35px;
+    margin: 30px 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #f1e0e9;
+
+}
