@@ -25,7 +25,7 @@ const ListReducer = (state = initialState, action) => {
         case "EDIT_ITEM":
             return{
                 ...state,
-                ToDoList: action.payload
+                currentItem: action.payload
             }
         case "DELETE_ITEM":
             const listAfterDelete = state.ToDoList.filter((item) => {

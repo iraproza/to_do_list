@@ -25,9 +25,9 @@
     }
 }
 
-  export const editItem = (ToDoList) => {
+  export const editItem = (currentItem) => {
     return{
         type: "EDIT_ITEM",
-        payload: ToDoList
+        payload: currentItem
     }
   }

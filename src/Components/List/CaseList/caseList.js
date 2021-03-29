@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { saveData } from "../../../Services/api-servece";
 import {Redirect} from "react-router-dom";
-import { updateItem, deleteItem } from "../../../Actions/ListActions";
+import { updateItem, deleteItem, editItem } from "../../../Actions/ListActions";
 import "./caseList.css";
 
 class CaseList extends React.Component  {
@@ -43,13 +43,10 @@ class CaseList extends React.Component  {
         }) 
     }
     
-    onEditClick = (Id) => {
-        const editId = this.state.ToDoList.find((elem) => elem.Id === Id);
-        this.setState(() => {
-            return {
-                currentItem: editId
-            }
-        })
+    onEditClick = () => {
+        const newCase = this.props;
+        const { editItem } = this.props;
+        editItem(newCase);
     }
 
     render(){
@@ -78,7 +75,7 @@ class CaseList extends React.Component  {
                     </div>
                     <div>
                     <Link to="/edit" className="table-link" > 
-                        <i className="fas fa-pencil-alt icon-edit edit" ></i>
+                        <i className="fas fa-pencil-alt icon-edit edit" onClick = {this.onEditClick}></i>
                     </Link>
                         <i className="fas fa-trash-alt icon-edit trash" onClick = {this.onDeleteItem}></i>
                     </div>
@@ -93,7 +90,8 @@ const mapStateToProps = ({ListReducer}) =>{
 }
 const mapDispatchToProps = {
     updateItem,
-    deleteItem
+    deleteItem,
+    editItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CaseList);

@@ -5,6 +5,13 @@ import { saveData } from "../../Services/api-servece";
 import { editItem } from "../../Actions/ListActions";
 
 class EditList extends React.Component { 
+    state =  {
+        "Description": this.props.currentItem.Description,
+        "Deadline": this.props.currentItem.Deadline,
+        "Do": this.props.currentItem.Do,
+        "isRedirect": false
+    }
+
     getDescription = (event) => {
         this.setState({
             Description: event.target.value
@@ -17,29 +24,33 @@ class EditList extends React.Component {
         })
     }
 
-    onEditContact = (li) =>{
-        const newList = this.state.ToDoList.map((item) => item.Id === li.Id ? li : item);
-        const {saveData, ToDoList} = this.props;
-        this.setState(()=>{
-            return{
-            ToDoList: newList
-            }
-        })
-        saveData(newList)
+    onEditItem = (Id) =>{
+        const { ToDoList, editItem, currentItem } = this.props;
+        if(currentItem !== null){
+            const newList = ToDoList.map((item) => item.Id === currentItem.Id ? {
+                "Id": currentItem.Id,
+                "Description": this.state.Description,
+                "Do": this.state.Do,
+                "Deadline": this.state.Deadline
+            } : item);
+            editItem(newList);
+            saveData(newList).then(() => 
+                this.setState({
+                    isRedirect: true
+                })
+            )
+        }
     }
 
     editList = (event) =>{
         event.preventDefault();
         const {Do, Description, Deadline, Id} =  this.props;
         const item = { Id, Do, Description, Deadline};
-        this.onEditContact(item);
-        this.setState({
-            isRedirect: true
-        })
+        this.onEditItem(item);
     }
 
     render(){
-        const {Description, Deadline, isRedirect} = this.props; 
+        const {Description, Deadline, isRedirect} = this.state; 
         if(isRedirect){
             return(
                 <Redirect to = "/"/>
@@ -55,13 +66,13 @@ class EditList extends React.Component {
                                     <div className="list-wrapper">
                                         <h2> Edit plan</h2>
                                         <ul className="d-flex flex-column-reverse todo-list">
-                                            <label for="to-do-item"> What are you planning?
+                                            <label htmlFor="to-do-item"> What are you planning?
                                                 <input type="text" id="to-do-item" value={Description} onChange ={this.getDescription}></input>
                                             </label>
-                                            <label for="to-do-item"> Deadline
-                                                <input type="date" id="to-do-item"></input>
+                                            <label htmlFor="to-do-item"> Deadline
+                                                <input type="date" id="to-do-item" value = { Deadline} onChange = {this.getDeadline}></input>
                                             </label>
-
+                                            <button className="col-7 col-md-7 col-lg-7" onClick = {this.editList}> Edit </button>
                                         </ul>
                                     </div>
                                 </div>
@@ -80,7 +91,8 @@ const mapStateToProps = ({ ListReducer }) => {
 }
 
 const mapDispatchToProps = {
-    editItem
+    editItem,
+    saveData
 }
 
 export default connect (mapStateToProps, mapDispatchToProps)(EditList);
