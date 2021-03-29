@@ -2,7 +2,7 @@ import React, { Fragment} from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { saveData } from "../../Services/api-servece";
-import { editItem } from "../../Actions/ListActions";
+import { updateItem } from "../../Actions/ListActions";
 
 class EditList extends React.Component { 
     state =  {
@@ -25,7 +25,7 @@ class EditList extends React.Component {
     }
 
     onEditItem = (Id) =>{
-        const { ToDoList, editItem, currentItem } = this.props;
+        const { ToDoList, updateItem, currentItem } = this.props;
         if(currentItem !== null){
             const newList = ToDoList.map((item) => item.Id === currentItem.Id ? {
                 "Id": currentItem.Id,
@@ -33,7 +33,7 @@ class EditList extends React.Component {
                 "Do": this.state.Do,
                 "Deadline": this.state.Deadline
             } : item);
-            editItem(newList);
+            updateItem(newList);
             saveData(newList).then(() => 
                 this.setState({
                     isRedirect: true
@@ -65,12 +65,12 @@ class EditList extends React.Component {
                                 <div className="card-body">
                                     <div className="list-wrapper">
                                         <h2> Edit plan</h2>
-                                        <ul className="d-flex flex-column-reverse todo-list">
+                                        <ul className="d-flex flex-column todo-list">
                                             <label htmlFor="to-do-item"> What are you planning?
                                                 <input type="text" id="to-do-item" value={Description} onChange ={this.getDescription}></input>
                                             </label>
-                                            <label htmlFor="to-do-item"> Deadline
-                                                <input type="date" id="to-do-item" value = { Deadline} onChange = {this.getDeadline}></input>
+                                            <label htmlFor="to-do-deadline"> Deadline
+                                                <input type="date" id="to-do-deadline" value = { Deadline} onChange = {this.getDeadline}></input>
                                             </label>
                                             <button className="col-7 col-md-7 col-lg-7" onClick = {this.editList}> Edit </button>
                                         </ul>
@@ -86,12 +86,12 @@ class EditList extends React.Component {
 }
 
 const mapStateToProps = ({ ListReducer }) => {
-    const { ToDoList, currentItem } = ListReducer;
-    return { ToDoList, currentItem }
+    const { ToDoList, currentItem,  valueSearch, searchList } = ListReducer;
+    return { ToDoList, currentItem,  valueSearch, searchList }
 }
 
 const mapDispatchToProps = {
-    editItem,
+    updateItem,
     saveData
 }
 

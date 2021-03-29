@@ -31,3 +31,10 @@
         payload: currentItem
     }
   }
+
+  export const searchItem = (description) =>{
+    return{
+        type: "SEARCH_ITEM",
+        payload: description
+    }
+}

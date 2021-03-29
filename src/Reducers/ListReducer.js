@@ -1,6 +1,8 @@
 const initialState = {
     ToDoList: [],
-    currentItem: null
+    currentItem: null,
+    searchList: [],
+    valueSearch: ''
 }
 
 const ListReducer = (state = initialState, action) => {
@@ -25,20 +27,40 @@ const ListReducer = (state = initialState, action) => {
         case "EDIT_ITEM":
             return{
                 ...state,
+                searchList: [],
                 currentItem: action.payload
             }
         case "DELETE_ITEM":
             const listAfterDelete = state.ToDoList.filter((item) => {
                 return item.Id !== action.payload;
             });
-            // const searchNewList = state.searchList.filter((contact_item) => {
-            //     return contact_item.Id !== action.payload;
-            // });
+            const searchNewList = state.searchList.filter((item) => {
+                return item.Id !== action.payload;
+            });
             return{
                 ...state,
-                ToDoList: listAfterDelete
-                // searchList: searchNewList
+                ToDoList: listAfterDelete,
+                searchList: searchNewList
             }
+        case "SEARCH_ITEM":
+            const tmpList = state.ToDoList.slice();
+            let newList = tmpList.filter((item) => {
+                return item.Description.toLowerCase().indexOf(action.payload.toLowerCase()) > -1;
+            });
+            if (newList.length === 0) {
+                return {
+                    ...state,
+                    searchList: [],
+                    valueSearch: action.payload
+                }
+            } else {
+                return {
+                    ...state,
+                    searchList: newList,
+                    valueSearch: action.payload
+                }
+            }
+
         default:
             return state;
     }

@@ -63,11 +63,11 @@ class AddCase extends React.Component {
                                     <div className="list-wrapper">
                                         <form onSubmit = {this.addNewItems} className="d-flex flex-column todo-list">
                                             <label htmlFor="to-do-item"> What are you planning?
-                                                <input type="text" id="to-do-item" onChange = { this.getDescription }></input>
                                             </label>
-                                            <label > Deadline
-                                                <input type="date"  onChange = { this.getDeadline } min = {calendar} ></input>
+                                            <input type="text" id="to-do-item" onChange = { this.getDescription }></input>
+                                            <label  htmlFor="to-do-deadline"> Deadline
                                             </label>
+                                            <input type="date" id="to-do-deadline" onChange = { this.getDeadline } min = {calendar} ></input>
                                             <button className="col-7 col-md-7 col-lg-7" type="submit"> Add </button>
                                         </form>
                                     </div>

@@ -1,10 +1,20 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect} from "react";
 import {connect} from "react-redux";
 import "./search.css";
-// import "./search.css";
-import {searchContact} from "../../Actions/ListActions"
+import "./search.css";
+import {searchItem} from "../../Actions/ListActions"
 
-const Search = () => {
+const Search = ({ searchItem, searchList, valueSearch }) => {
+    useEffect(()=>{
+        return () => {
+            searchItem('')
+        }
+    }, []);
+
+    const onSearch = (event) => {
+        searchItem(event.target.value)
+    }
+    
     return (
         <Fragment>
             <div className="container search-container">
@@ -17,7 +27,7 @@ const Search = () => {
                                 <i className="fas fa-search"></i>
                                 </div>
                                 <div className="col search-input-box">
-                                    <input className="search-input form-control form-control-lg form-control-borderless" type="search" placeholder="Search contact"/>
+                                    <input className="search-input form-control form-control-lg form-control-borderless" type="search" placeholder="Search..." onChange = { onSearch }/>
                                 </div>
                             </div>
                         </div>
@@ -28,4 +38,13 @@ const Search = () => {
     )
 }
 
-export default Search;
+const mapStateToProps = ({ListReducer}) => {
+    const { searchList, valueSearch } = ListReducer;
+    return { searchList, valueSearch}
+
+}
+
+const mapDispatchToProps = {
+    searchItem
+}
+export default connect(null, mapDispatchToProps)(Search);
