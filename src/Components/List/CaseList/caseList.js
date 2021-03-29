@@ -1,15 +1,16 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { saveData } from "../../../Services/api-servece";
 import {Redirect} from "react-router-dom";
-import { updateItem } from "../../../Actions/ListActions";
+import { updateItem, deleteItem } from "../../../Actions/ListActions";
 import "./caseList.css";
 
 class CaseList extends React.Component  {
+
     onChecked= () => {
         const item = {...this.props};
         const { ToDoList, updateItem } = this.props;
-        console.log(ToDoList)
         const newList = ToDoList.slice();
         const index = ToDoList.findIndex((elem) => elem.Id === item.Id);
 
@@ -27,6 +28,30 @@ class CaseList extends React.Component  {
         }) 
     }
     
+    onDeleteItem = () => {
+        const { ToDoList, deleteItem } = this.props;
+        const list_item = this.props;
+        const newList = ToDoList.filter((item) => {
+            return item.Id !== list_item.Id;
+        });
+        deleteItem(list_item.Id);
+        saveData(newList).then(() => {
+            this.setState({
+                ToDoList: newList,
+                isRedirect: true
+            })
+        }) 
+    }
+    
+    onEditClick = (Id) => {
+        const editId = this.state.ToDoList.find((elem) => elem.Id === Id);
+        this.setState(() => {
+            return {
+                currentItem: editId
+            }
+        })
+    }
+
     render(){
         const {Description, Deadline, Do} = this.props;
         let statusStyle = "form-check-label description";
@@ -52,8 +77,10 @@ class CaseList extends React.Component  {
                         </label> 
                     </div>
                     <div>
-                        <i className="fas fa-pencil-alt icon-edit"></i>
-                        <i className="fas fa-trash-alt icon-edit"></i>
+                    <Link to="/edit" className="table-link" > 
+                        <i className="fas fa-pencil-alt icon-edit edit" ></i>
+                    </Link>
+                        <i className="fas fa-trash-alt icon-edit trash" onClick = {this.onDeleteItem}></i>
                     </div>
                 </li>                   
         )
@@ -65,7 +92,8 @@ const mapStateToProps = ({ListReducer}) =>{
     return {ToDoList}
 }
 const mapDispatchToProps = {
-    updateItem
+    updateItem,
+    deleteItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CaseList);

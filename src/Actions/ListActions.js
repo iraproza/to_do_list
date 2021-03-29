@@ -17,5 +17,17 @@
       type: "UPDATE_ITEM",
       payload: ToDoList
     }
+  }
+  export const deleteItem = (Id) => {
+    return {
+        type: "DELETE_ITEM",
+        payload: Id
+    }
+}
 
+  export const editItem = (ToDoList) => {
+    return{
+        type: "EDIT_ITEM",
+        payload: ToDoList
+    }
   }

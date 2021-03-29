@@ -43,3 +43,8 @@ body .item-list{
     color: #744974;
 }
 
+.trash,
+.edit{
+    cursor: pointer;
+}
+
