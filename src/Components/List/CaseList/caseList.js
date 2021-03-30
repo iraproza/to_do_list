@@ -59,6 +59,15 @@ class CaseList extends React.Component  {
             statusStyle = "form-check-label description";
             checked =""
         }
+        const arrDate = ((new Date()).toLocaleDateString()).split(".");
+        const  calendar = [arrDate[2], arrDate[1], arrDate[0]].join('-');
+        let dateClass = "deadline";
+        if(Deadline === calendar){
+            dateClass = "deadline-end deadline"
+        }
+        else{
+            dateClass = "deadline"
+        }
 
         return(      
                 <li className = "item-list">
@@ -69,7 +78,7 @@ class CaseList extends React.Component  {
                                 <i className="input-helper"></i>
                                 {Description}
                                 </div>
-                            <label className= "deadline">{Deadline}</label>
+                            <label className= {dateClass}>{Deadline}</label>
                         </label> 
                     </div>
                     <div>

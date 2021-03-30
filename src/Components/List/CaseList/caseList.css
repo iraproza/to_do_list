@@ -48,3 +48,10 @@ body .item-list{
     cursor: pointer;
 }
 
+.deadline-end{
+    text-decoration: underline;
+    text-decoration-color: rgb(219, 25, 25);
+    color: rgb(219, 25, 25);
+
+}
+
